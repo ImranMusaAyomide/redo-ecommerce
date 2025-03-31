@@ -1,5 +1,6 @@
 const wrapper = document.querySelector(".sliderWrapper");
 const menuItems = document.querySelectorAll(".menuItem");
+// const currentProductSizes = document.querySelectorAll(".size");
 
 
 const products = [
@@ -58,12 +59,23 @@ const products = [
   },
 ];
 
-let choosenProduct = products[0]
+    const currentProductImg = document.querySelector(".productImg");
+    const currentProductTitle = document.querySelector(".productTitle");
+    const currentProductPrice = document.querySelector(".productPrice");
+    const color = document.querySelectorAll(".color");
+    const currentProductSizes = document.querySelectorAll(".size");
+
+let choosenProduct = products[0]         
 menuItems.forEach((item, index) => {
   item.addEventListener("click", () =>  {
     //change the current slide
-    wrapper.style.transform=`translateX(${-100 * index}vw)`;
-  });
+    wrapper.style.transform = `translateX(${-100 * index}vw)`;
+
   //change the choosen products
   choosenProduct = products[index]
+
+    //change the text of currentproducts
+    currentProductTitle.textContent = choosenProduct.title; 
+    currentProductPrice.textContent = choosenProduct.price; 
+ });
 });
